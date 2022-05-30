@@ -127,7 +127,7 @@ public static class ProductsDb
         productEntityOnDb.Id = product.Id;
         productEntityOnDb.Name = product.Name;
         productEntityOnDb.Description = product.Description;
-        productEntityOnDb.Quantity = productEntityOnDb.Quantity;
+        productEntityOnDb.Quantity = product.Quantity;
         productEntityOnDb.DateUpdated = product.DateUpdated;
         context.SaveChanges();
     }
