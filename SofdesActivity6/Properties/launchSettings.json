@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SofdesActivity6 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SofdesActivity6 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
