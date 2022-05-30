@@ -42,6 +42,8 @@ namespace SofdesActivity6
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+            using var context = new ProductContext();
+            context.Database.EnsureCreated();
             m_window = new MainWindow();
             m_window.Activate();
         }

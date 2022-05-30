@@ -5,9 +5,163 @@
     xmlns:local="using:SofdesActivity6"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.ColumnSpan="2"
+            Text="Inventory System"
+            HorizontalAlignment="Center"
+            Style="{StaticResource SubtitleTextBlockStyle}"
+            Margin="20,20,20,10"/>
+
+        <ScrollViewer
+            Grid.Column="0"
+            Grid.Row="1">
+
+            <StackPanel Margin="20,10,20,20">
+            
+                <TextBlock
+                    Text="Product ID"
+                    FontWeight="Medium"
+                    Margin="0,0,0,5"/>
+                <TextBox
+                    x:Name="IdInput"
+                    Margin="0,5,0,10"/>
+
+                <TextBlock
+                    Text="Product name"
+                    FontWeight="Medium"
+                    Margin="0,10,0,5"/>
+                <TextBox
+                    x:Name="NameInput"
+                    Margin="0,5,0,10"/>
+
+                <TextBlock
+                    Text="Product description"
+                    FontWeight="Medium"
+                    Margin="0,10,0,5"/>
+                <TextBox
+                    x:Name="DescriptionInput"
+                    Height="100"
+                    Margin="0,5,0,10"
+                    TextWrapping="Wrap"
+                    AcceptsReturn="True"/>
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Quantity"
+                        FontWeight="Medium"
+                        Margin="0,10,10,5"/>
+                    <TextBox
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        x:Name="QuantityInput"
+                        Margin="0,5,10,10"
+                        BeforeTextChanging="DigitsOnly"/>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="Date"
+                        FontWeight="Medium"
+                        Margin="10,10,0,5"/>
+                    <DatePicker
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        x:Name="DateInput"
+                        Margin="10,5,0,10"/>
+
+                </Grid>
+
+                <Grid
+                    Margin="0,10,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Grid.Column="0"
+                        Content="Add"
+                        Margin="0,0,5,0"
+                        HorizontalAlignment="Stretch"
+                        Click="Add"/>
+                    <Button
+                        Grid.Column="1"
+                        Content="Update"
+                        Margin="5,0,5,0"
+                        HorizontalAlignment="Stretch"
+                        Click="Update"/>
+                    <Button
+                        Grid.Column="2"
+                        Content="Delete"
+                        Margin="5,0,5,0"
+                        HorizontalAlignment="Stretch"
+                        Click="Remove"/>
+                    <Button
+                        Grid.Column="3"
+                        Content="Clear"
+                        Margin="5,0,0,0"
+                        HorizontalAlignment="Stretch"
+                        Click="Clear"/>
+
+                </Grid>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="20,10,20,20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox
+                x:Name="SearchInput"
+                PlaceholderText="Search"
+                Margin="0,5,0,10"
+                TextChanged="Search"/>
+
+            <controls:DataGrid
+                Grid.Row="1"
+                x:Name="ProductsGrid"
+                ItemsSource="{x:Bind Products, Mode=OneWay}"
+                DoubleTapped="SelectProduct"/>
+
+        </Grid>
+
+    </Grid>
+    
 </Window>
