@@ -128,8 +128,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void Search(object sender, TextChangedEventArgs e)
     {
-        var searchQuery = SearchInput.Text;
-        Products = ProductsDb.GetAll(searchQuery);
+        LoadData();
     }
 
     private void SelectProduct(object sender, DoubleTappedRoutedEventArgs e)
@@ -180,7 +179,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void LoadData()
     {
-        Products = ProductsDb.GetAll();
+        var searchQuery = SearchInput.Text;
+        Products = ProductsDb.GetAll(searchQuery);
     }
 
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
